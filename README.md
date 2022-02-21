@@ -1,4 +1,4 @@
-| <img align='right' src='https://user-images.githubusercontent.com/55933131/155010579-1ba82445-298c-4746-8f1a-8b368754f780.png'> |
+<img align='right' src='https://user-images.githubusercontent.com/55933131/155010579-1ba82445-298c-4746-8f1a-8b368754f780.png'> 
 
 
 # Chicago Data
