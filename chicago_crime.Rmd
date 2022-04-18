@@ -1,0 +1,38 @@
+---
+title: "Chicago Crime"
+author: "Marcus Minko"
+date: "4/13/2022"
+output: html_document
+---
+
+### Load packages and data
+
+```{r load-packages, message = FALSE}
+library(tidyverse)
+
+Chicago_Crime_Data <- read_csv("Chicago_Crime_Data.csv")
+
+ChiCrime <- Chicago_Crime_Data
+View(ChiCrime)
+```
+
+### Find the most common types (top 10) of crime in Chicago and plot them
+
+```{crime-type}
+ChiCrime %>% 
+  drop_na %>%
+  group_by(PRIMARY_TYPE) %>%
+  summarize(
+    count = n(),
+    percent = count / nrow(.) * 100
+  ) %>%
+  arrange(desc(count), desc(PRIMARY_TYPE)) %>%
+  head(10)
+```
+#Theft is most common crime. Next, a frequency plot of these theft descriptions
+
+```{r description-plot}
+ChiCrime %>% 
+ filter(PRIMARY_TYPE == "THEFT") %>% 
+ ggplot(aes(x = DESCRIPTION)) + geom_bar(fill = "Steel Blue") + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + labs(title = "Frequency of Types of Theft in Chicago", y = "Frequency") 
+```
